@@ -3,8 +3,7 @@
 @import 'font/fonts';
 @import 'font/simple-line-icons';
 @import 'font/weather-icons';
-@import 'font/feather';
-@import '../plugins/font-awesome/css/font-awesome.scss';
+@import 'font/feather'; 
 
 @import "mixins/responsive";
 @import "mixins/clearfix";
@@ -53,3 +52,8 @@
 
 @import 'skins/dark.scss';
 
+
+
+.page{
+    padding: 10px;
+}

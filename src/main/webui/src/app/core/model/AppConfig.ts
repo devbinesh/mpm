@@ -2,12 +2,13 @@
 
 export class AppConfig {
 
-    private username: string
-    private loginuser: string
-    private userType: string
-    private firstName: string
-    private lastName: string
-    private lastLogin: string
-    private dateFormat: string
+     username: string
+     loginuser: string
+     userType: string
+     firstName: string
+     lastName: string
+     lastLogin: string
+     dateFormat: string
+     maxLogoSize: number = 1024 //In KB
 
 }

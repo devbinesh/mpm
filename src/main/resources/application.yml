@@ -1,3 +1,4 @@
+image-server: http://localhost/images/
 server:
   port: 8888
   

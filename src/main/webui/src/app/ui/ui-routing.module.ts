@@ -11,12 +11,12 @@ const routes: Routes = [
   path:"",
   component: UiComponent, 
   children:[
-   /*  {
+    {
       path: '',
    
-      redirectTo: 'dashboard',
+      redirectTo: 'company-setup/company-info',
       pathMatch: 'full' },
-   */
+   
    // Hrms Routes
  
    { path: 'dashboard', component: DashboardComponent, data: { title: ':: Epic :: Home ::' } },

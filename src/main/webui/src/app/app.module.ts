@@ -65,7 +65,7 @@ import { registerLocaleData, LocationStrategy, HashLocationStrategy } from '@ang
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppService } from '@core/services/app.service';
 
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export function initApp(http: HttpClient,appService: AppService) {
   return () => {
@@ -90,6 +90,7 @@ export function initApp(http: HttpClient,appService: AppService) {
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     SharedModule.forRoot(),
     CoreModule.forRoot(),

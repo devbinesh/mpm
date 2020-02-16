@@ -20,6 +20,7 @@ import { FlagIconComponent } from '@pages/Icon/flag-icon/flag-icon.component';
 import { PaymentIconComponent } from '@pages/Icon/payment-icon/payment-icon.component';
  
  
+import { DataTablesModule } from 'angular-datatables';
 import { NgZorroAntdModule, NZ_I18N, en_US } from 'ng-zorro-antd';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
@@ -53,7 +54,7 @@ registerLocaleData(en);
     UIRoutingModule,
     FormsModule,
     HttpClientModule,
-  
+    DataTablesModule,
     /** import ng-zorro-antd root module，you should import NgZorroAntdModule and avoid importing sub modules directly **/
     NgZorroAntdModule
   ],

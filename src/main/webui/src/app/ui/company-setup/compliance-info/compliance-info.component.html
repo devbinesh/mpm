@@ -1,0 +1,246 @@
+<form [formGroup]="infoForm" (ngSubmit)="onFormSubmit()" nz-form>
+
+    <div nz-row>
+         <div nz-col [nzSpan]="12">
+            <nz-form-item  nz-flex >
+                <nz-form-label [nzSm]="8" [nzXs]="24" nzRequired nzFor="businessName">Company Name</nz-form-label>
+                <nz-form-control   [nzSm]="16" [nzXs]="24" nzErrorTip="Company name is required">
+                   <input formControlName="businessName" type="text" nz-input />
+                </nz-form-control>
+            </nz-form-item>
+             
+        </div>
+        <div nz-col [nzSpan]="12" >
+            <nz-form-item  nz-flex >
+                <nz-form-label [nzSm]="8" [nzXs]="24"   nzFor="businessName">Company Logo</nz-form-label>
+                <nz-form-control   [nzSm]="16" [nzXs]="24"  >
+                   
+            <nz-upload
+            class="avatar-uploader"
+            nzAction="api/company/uploadlogo"
+            nzName="logo"
+            nzListType="picture-card"
+            [nzShowUploadList]="false"
+            [nzBeforeUpload]="beforeUpload"
+            (nzChange)="handleChange($event)"
+        >
+            <ng-container *ngIf="!logoUrl">
+            <i class="upload-icon" nz-icon [nzType]="loadingLogo ? 'loadingLogo' : 'plus'"></i>
+            <div class="ant-upload-text">Upload</div>
+            </ng-container>
+            <img *ngIf="logoUrl" [src]="logoUrl"   />
+        </nz-upload>
+    </nz-form-control>
+    </nz-form-item>
+        </div>
+       
+     
+    </div>
+   
+
+    <div nz-row>
+
+        <div nz-col [nzSpan]="12" >
+            <nz-form-item nz-flex >
+                <nz-form-label [nzSm]="8" [nzXs]="24" nzRequired nzFor="businessType">Type Of Business</nz-form-label>
+                <nz-form-control   [nzSm]="16" [nzXs]="24" nzErrorTip="Type Of Business is required">
+                   <input formControlName="businessType" type="text" nz-input />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="12" >
+            <nz-form-item nz-flex >
+                <nz-form-label [nzSm]="8" [nzXs]="24"   nzFor="businessNature">Nature Of Business</nz-form-label>
+                <nz-form-control   [nzSm]="16" [nzXs]="24" >
+                   <input formControlName="businessNature" type="text" nz-input />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+    <nz-form-item>
+        <nz-form-label [nzSm]="4" [nzXs]="24" nzRequired nzFor="address">Address</nz-form-label>
+        <nz-form-control   [nzSm]="20" [nzXs]="24" nzErrorTip="Addres is required">
+           <input formControlName="address" type="text" nz-input />
+        </nz-form-control>
+    </nz-form-item>
+
+    
+    <div nz-row>
+
+        <div nz-col [nzSpan]="12" >
+            <nz-form-item nz-flex >
+                <nz-form-label [nzSm]="8" [nzXs]="24" nzRequired nzFor="city">City</nz-form-label>
+                <nz-form-control   [nzSm]="16" [nzXs]="24" nzErrorTip="Ciy is required">
+                   <input formControlName="city" type="text" nz-input />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="12" >
+            <nz-form-item nz-flex >
+                <nz-form-label [nzSm]="8" [nzXs]="24"   nzFor="state">State</nz-form-label>
+                <nz-form-control   [nzSm]="16" [nzXs]="24" nzErrorTip="State is required">
+                   <input formControlName="state" type="text" nz-input />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+    <div nz-row>
+
+        <div nz-col [nzSpan]="12" >
+            <nz-form-item nz-flex >
+                <nz-form-label [nzSm]="8" [nzXs]="24" nzRequired nzFor="pincode">Zip Code</nz-form-label>
+                <nz-form-control   [nzSm]="16" [nzXs]="24" nzErrorTip="Zip Code is required">
+                   <input formControlName="pincode" type="text" nz-input />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="12" >
+            <nz-form-item nz-flex >
+                <nz-form-label [nzSm]="8" [nzXs]="24"   nzFor="phone">Phone</nz-form-label>
+                <nz-form-control   [nzSm]="16" [nzXs]="24" nzErrorTip="Phone is required">
+                   <input formControlName="phone" type="text" nz-input />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+    <div nz-row>
+
+        <div nz-col [nzSpan]="12" >
+            <nz-form-item nz-flex >
+                <nz-form-label [nzSm]="8" [nzXs]="24" nzRequired nzFor="email">Email</nz-form-label>
+                <nz-form-control   [nzSm]="16" [nzXs]="24" nzErrorTip="Email is required">
+                   <input formControlName="email" type="email" nz-input />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="12" >
+            <nz-form-item nz-flex >
+                <nz-form-label [nzSm]="8" [nzXs]="24"   nzFor="phone">Fax</nz-form-label>
+                <nz-form-control   [nzSm]="16" [nzXs]="24"  >
+                   <input formControlName="fax" type="text" nz-input />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+    <div nz-row>
+
+        <div nz-col [nzSpan]="12" >
+            <nz-form-item nz-flex >
+                <nz-form-label [nzSm]="8" [nzXs]="24" nzRequired nzFor="pincode">Email</nz-form-label>
+                <nz-form-control   [nzSm]="16" [nzXs]="24" nzErrorTip="Email is required">
+                   <input formControlName="email" type="email" nz-input />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="12" >
+            <nz-form-item nz-flex >
+                <nz-form-label [nzSm]="8" [nzXs]="24"   nzFor="phone">Fax</nz-form-label>
+                <nz-form-control   [nzSm]="16" [nzXs]="24"  >
+                   <input formControlName="fax" type="text" nz-input />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+    <div nz-row>
+
+        <div nz-col [nzSpan]="12" >
+            <nz-form-item nz-flex >
+                <nz-form-label [nzSm]="8" [nzXs]="24"   nzFor="pincode">CIN No.</nz-form-label>
+                <nz-form-control   [nzSm]="16" [nzXs]="24"  >
+                   <input formControlName="cinNo" type="text" nz-input />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="12" >
+            <nz-form-item nz-flex >
+                <nz-form-label [nzSm]="8" [nzXs]="24"   nzFor="phone">Pan No.</nz-form-label>
+                <nz-form-control   [nzSm]="16" [nzXs]="24"  >
+                   <input formControlName="panNo" type="text" nz-input />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+    <div nz-row>
+
+        <div nz-col [nzSpan]="12" >
+            <nz-form-item nz-flex >
+                <nz-form-label [nzSm]="8" [nzXs]="24"   nzFor="tanNo">TAN No.</nz-form-label>
+                <nz-form-control   [nzSm]="16" [nzXs]="24"  >
+                   <input formControlName="tanNo" type="text" nz-input />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="12" >
+            <nz-form-item nz-flex >
+                <nz-form-label [nzSm]="8" [nzXs]="24"   nzFor="serviceTax">Service Tax</nz-form-label>
+                <nz-form-control   [nzSm]="16" [nzXs]="24"  >
+                   <input formControlName="serviceTax" type="text" nz-input />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+
+    <div nz-row>
+
+        <div nz-col [nzSpan]="12" >
+            <nz-form-item nz-flex >
+                <nz-form-label [nzSm]="8" [nzXs]="24"   nzFor="pfNo">PF No.</nz-form-label>
+                <nz-form-control   [nzSm]="16" [nzXs]="24"  >
+                   <input formControlName="pfNo" type="text" nz-input />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="12" >
+            <nz-form-item nz-flex >
+                <nz-form-label [nzSm]="8" [nzXs]="24"   nzFor="empStatInsNo">ESI No.</nz-form-label>
+                <nz-form-control   [nzSm]="16" [nzXs]="24"  >
+                   <input formControlName="empStatInsNo" type="text" nz-input />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+    <div nz-row>
+
+        <div nz-col [nzSpan]="12" >
+            <nz-form-item nz-flex >
+                <nz-form-label [nzSm]="8" [nzXs]="24"   nzFor="ptNoCo">PF Tax No.(Co.)</nz-form-label>
+                <nz-form-control   [nzSm]="16" [nzXs]="24"  >
+                   <input formControlName="ptNoCo" type="text" nz-input />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="12" >
+            <nz-form-item nz-flex >
+                <nz-form-label [nzSm]="8" [nzXs]="24"   nzFor="ptNoDir">PF Tax No.(Dir.)</nz-form-label>
+                <nz-form-control   [nzSm]="16" [nzXs]="24"  >
+                   <input formControlName="ptNoDir" type="text" nz-input />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+    <div nz-row>
+
+        <div nz-col [nzSpan]="12" >
+            <nz-form-item nz-flex >
+                <nz-form-label [nzSm]="8" [nzXs]="24"   nzFor="ptNoEmp">Prof Tax No(Emp.)</nz-form-label>
+                <nz-form-control   [nzSm]="16" [nzXs]="24"  >
+                   <input formControlName="ptNoEmp" type="text" nz-input />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        
+    </div>
+
+    <nz-form-item nz-row  >
+        <nz-form-control [nzSpan]="14" [nzOffset]="4">
+          <button [nzLoading]="saving"  nz-button nzType="primary" type="submit"><i nz-icon nzType="check" nzTheme="outline"></i> Save</button>
+        </nz-form-control>
+      </nz-form-item>
+</form>

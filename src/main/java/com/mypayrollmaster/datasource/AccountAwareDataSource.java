@@ -237,15 +237,12 @@ public class AccountAwareDataSource extends AbstractDataSource implements Initia
 		logger.info(" Authenticated  "+ (authentication != null && authentication.isAuthenticated()));
 		if(authentication != null && authentication.isAuthenticated()) {
 			logger.info(" Authenticated class  "+authentication.getClass().toString());
-			if(authentication instanceof OAuth2Authentication) {
-				String token =   ((OAuth2AuthenticationDetails) authentication.getDetails()).getTokenValue();
-				OAuth2AccessToken accessToken = tokenStore.readAccessToken(token);
-				Map<String,Object>  addInfo =  accessToken.getAdditionalInformation();
-				String account  = addInfo.containsKey("account")?addInfo.get("account").toString():"";
-				
-				 return new String(account);
-			}
-		
+			 
+			AccountUserDetails accountuserDetails =  (AccountUserDetails) authentication.getPrincipal();
+			logger.info(" Tenant  "+accountuserDetails.getTenant());
+			
+			return accountuserDetails.getTenant();
+			
 		}
 		
 			return TenantContextHolder.getTenant();

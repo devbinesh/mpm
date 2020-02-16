@@ -14,4 +14,5 @@ public class AppConfig {
 	private UserDto loginUser;
 	private String account;
 	
+	private Long maxLogoSize = 1024L;
 }

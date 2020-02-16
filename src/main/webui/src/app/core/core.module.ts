@@ -1,6 +1,6 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {AppService} from '@core/services'
+import {AppService,CompanySetupService} from '@core/services'
 
 
 @NgModule({
@@ -9,7 +9,7 @@ import {AppService} from '@core/services'
     CommonModule
   ],
   providers:[
-    AppService
+    AppService,CompanySetupService
   ]
 
 })
