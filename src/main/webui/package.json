@@ -27,7 +27,7 @@
     "@syncfusion/ej2-angular-richtexteditor": "^17.2.52",
     "@types/lodash": "^4.14.149",
     "angular-datatables": "^8.0.0",
-    "apexcharts": "^3.8.6",
+    "apexcharts": "^3.24.0",
     "bootstrap": "^4.1.1",
     "datatables.net": "^1.10.20",
     "datatables.net-dt": "^1.10.20",
